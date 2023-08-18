@@ -59,7 +59,7 @@ public class Nails {
                 result += nums[i] - nums[i-1];
                 }else if (nums[i] - nums[i-1] < nums[i+1] - nums[i]) { // Расстояние от элемента до предыдущего элемента меньше
                     result += nums[i] - nums[i-1];
-                }else if (nums[i] - nums[i-1] > nums[i+1] - nums[i]) { // Расстояние от элемента до следующего элемента меньше
+                }else if (nums[i] - nums[i-1] >= nums[i+1] - nums[i]) { // Расстояние от элемента до следующего элемента меньше
                     result += nums[i+1] - nums[i];
                     i++;
                 }
