@@ -48,7 +48,7 @@ public class Nails {
         return result;
     }
     
-    private static int shortestThreadPath(int[] nums){ // Поиск минимальной суммарной длины всех ниток.
+    public static int shortestThreadPath(int[] nums){ // Поиск минимальной суммарной длины всех ниток.
         
         int result  = nums[1] - nums[0]; 
         int len     = nums.length; 
