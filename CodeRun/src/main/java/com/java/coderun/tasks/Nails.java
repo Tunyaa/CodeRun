@@ -8,7 +8,7 @@ import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 import java.util.Arrays;
 
-
+ 
 // Задача https://coderun.yandex.ru/problem/pin/description?currentPage=1&pageSize=10&rowNumber=1&compiler=java
 /* Решение
         Сортируем координаты по возрастанию.
@@ -49,22 +49,43 @@ public class Nails {
     }
     
     public static int shortestThreadPath(int[] nums){ // Поиск минимальной суммарной длины всех ниток.
+        //2,7,10,17,22,27,28
+        int result  = nums[1] - nums[0]; //1 +1
+        int len     = nums.length; //6
+        int center, left, right;
         
-        int result  = nums[1] - nums[0]; 
-        int len     = nums.length; 
-        
-        if(len > 2){
-            for (int i = 2; i < len; i++) {
-                if(i == len-1){                         // Если последний элемент
-                result += nums[i] - nums[i-1];
-                }else if (nums[i] - nums[i-1] < nums[i+1] - nums[i]) { // Расстояние от элемента до предыдущего элемента меньше
-                    result += nums[i] - nums[i-1];
-                }else if (nums[i] - nums[i-1] >= nums[i+1] - nums[i]) { // Расстояние от элемента до следующего элемента меньше
-                    result += nums[i+1] - nums[i];
-                    i++;
+        if(len > 2){//
+            result += nums[len-1] - nums[len-2];
+            if (len > 5) {// i=2
+                for (int i = 2; i < len-2; i++) {
+                    center = nums[i+1] - nums[i];//6
+                    left = nums[i] - nums[i-1];//2
+                    right = nums[i+2] - nums[i+1];//
+                    
+                    if (i == len - 3) {//если элемент 3й уперся в последнюю пару
+                        result += left <= center ? left : center;
+                    }else if (i >= len -2) {// если элемент часть последней пары
+                        return result;
+                    }else if (center<= right + left) { //
+                        /*
+                        if (left < right) {
+                            result += left;
+                        }else{
+                            result += center;
+                            i++;
+                        }
+                        */
+                        
+                        result += center;
+                        i++;
+                    }else {
+                        result += left;
+                    }
                 }
-            }
+            }            
         }
         return result;
+             //       
+           
     }
 }
