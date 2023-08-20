@@ -49,24 +49,24 @@ public class Nails {
     }
     
     public static int shortestThreadPath(int[] nums){ // Поиск минимальной суммарной длины всех ниток.
-        //2,7,10,17,22,27,28
-        int result  = nums[1] - nums[0]; //1 +1
-        int len     = nums.length; //6
+        // 1 2 4 7 11 16 22 29 37 46 56 66
+        int result  = nums[1] - nums[0]; //
+        int len     = nums.length; //
         int center, left, right;
         
         if(len > 2){//
             result += nums[len-1] - nums[len-2];
-            if (len > 5) {// i=2
+            if (len >= 5) {// i=2
                 for (int i = 2; i < len-2; i++) {
-                    center = nums[i+1] - nums[i];//6
-                    left = nums[i] - nums[i-1];//2
+                    center = nums[i+1] - nums[i];//
+                    left = nums[i] - nums[i-1];//
                     right = nums[i+2] - nums[i+1];//
                     
                     if (i == len - 3) {//если элемент 3й уперся в последнюю пару
                         result += left <= center ? left : center;
                     }else if (i >= len -2) {// если элемент часть последней пары
                         return result;
-                    }else if (center<= right + left) { //
+                    }else if (center< right + left) { //
                         /*
                         if (left < right) {
                             result += left;

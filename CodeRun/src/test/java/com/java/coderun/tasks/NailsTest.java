@@ -122,20 +122,47 @@ public class NailsTest {
     }
     
     @Test
-    public void shortestThreadPath10(){ //               //1 2 4 7 9 10 11 13 16 18 19
-        int[] ary = new int[]{1,2,4,7,9,10,11,13,16,18,19};     //  
-                                                        
+    public void shortestThreadPath10(){ //               //         1,2,4,7,9,10,11,13,16,18,19
+        int[] ary = new int[]{1,2,4,7,9,10,11,13,16,18,19};     //   1 1 3 2 6  6  2  3  2  1
+                                                                   //1  1 2   1
         int result = Nails.shortestThreadPath(ary);
         
         assertEquals(10, result);
     }
     
     @Test
-    public void shortestThreadPath11(){ //               //1 2 3 6 8 12 14 16 17 
-        int[] ary = new int[]{1 ,2 ,3 ,6 ,8 ,12, 14 ,16 ,17 };     //  
-                                                        
+    public void shortestThreadPath11(){ //               //             1 2 3 6 8 12 14 16 17 
+        int[] ary = new int[]{1 ,2 ,3 ,6 ,8 ,12, 14 ,16 ,17 };     //    1 1 3 2 4  2  4  1
+                                                                       //1 1   2    2     1
         int result = Nails.shortestThreadPath(ary);
         
-        assertEquals(9, result);
+        assertEquals(7, result);
+    }
+    
+    @Test
+    public void shortestThreadPath12(){ //               //             1 2 3 6 8 12 14 16 17 
+        int[] ary = new int[]{1 ,2 ,3 ,6 ,8 ,12, 14 ,16 ,17, 18 };     //    1 1 3 2 4  2  4  1
+                                                                       //1 1   2    2     1
+        int result = Nails.shortestThreadPath(ary);
+        
+        assertEquals(8, result);
+    }
+    
+    @Test
+    public void shortestThreadPath13(){ //               //             1 2 3 4 5 
+        int[] ary = new int[]{1 ,2 ,3 ,4, 5};     //    
+                                                                       
+        int result = Nails.shortestThreadPath(ary);
+        
+        assertEquals(3, result);
+    }
+    
+    @Test
+    public void shortestThreadPath14(){ //               //             1 2 3 4 5 
+        int[] ary = new int[]{56 ,46 ,37 ,29 ,22 ,16 ,11 ,7 ,4 ,2 ,1};     //    
+                                                                       
+        int result = Nails.shortestThreadPath(ary);
+        
+        assertEquals(31, result);
     }
 }
