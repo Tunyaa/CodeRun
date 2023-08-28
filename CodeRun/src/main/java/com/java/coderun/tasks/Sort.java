@@ -1,4 +1,5 @@
-package com.java.coderun;
+
+package com.java.coderun.tasks;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
@@ -8,8 +9,7 @@ import java.io.FileWriter;
 import java.io.IOException;
 
 
-public class CodeRun {
-
+public class Sort {
     public static void main(String[] args) {
         try {
             BufferedReader reader = new BufferedReader(new FileReader("input.txt"));
