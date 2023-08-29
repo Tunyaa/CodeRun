@@ -24,7 +24,7 @@ public class Sort {
             sort(nums);
             
             for (int i = 0; i < nums.length; i++) {
-                writer.write(String.valueOf(nums[i]));
+                writer.write(String.valueOf(nums[i]) + " ");
             }
             
             writer.close();

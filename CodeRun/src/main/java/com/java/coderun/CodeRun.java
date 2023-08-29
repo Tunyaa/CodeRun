@@ -6,48 +6,46 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
-
+import java.util.AbstractList;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Random;
 
 public class CodeRun {
 
-    public static void main(String[] args) {
-        try {
-            BufferedReader reader = new BufferedReader(new FileReader("input.txt"));
-            BufferedWriter writer = new BufferedWriter(new FileWriter("output.txt"));
-            int lineQuantity = Integer.parseInt(reader.readLine());
-            String[] line = reader.readLine().split(" ");
-            int[] nums = new int[lineQuantity];
-            for (int i = 0; i < line.length; i++) {
-                nums[i] = Integer.parseInt(line[i]);
-            }
-
-            sort(nums);
+    public static void main(String[] args) throws IOException {
+        BufferedWriter writer = new BufferedWriter(new FileWriter("input.txt"));
+        Random random = new Random();
+        int size = random.nextInt(1,20);
+        
+        writer.write(String.valueOf(size));
+        writer.newLine();
+        
+        for (int i = 0; i < size; i++) {
+            int len = random.nextInt(1, 1000_000);
             
-            for (int i = 0; i < nums.length; i++) {
-                writer.write(String.valueOf(nums[i]));
+            writer.write(String.valueOf(len));
+            writer.newLine();
+            int[] nums = new int[len];
+            
+            for (int j = 0; j < len; j++) {
+                nums[j] = random.nextInt(1,1_000_000_000);
+//                writer.write(String.valueOf(random.nextInt(1,1_000)));
+//                writer.write(" ");
             }
             
-            writer.close();
-            reader.close();
-
-        }catch (FileNotFoundException e) {
-            System.out.println(e);
-        } catch (IOException e) {
-            System.out.println(e);
-        }
-
-    }
-
-    static void sort(int[] ary) {
-        int t = 0;
-        for (int i = 0; i < ary.length; i++) {
-            for (int j = i + 1; j < ary.length; j++) {
-                if (ary[j] < ary[i]) {
-                    t = ary[j];
-                    ary[j] = ary[i];
-                    ary[i] = t;
-                }
+            Arrays.sort(nums);
+            
+            for (int j = 0; j < nums.length; j++) {
+                writer.write(String.valueOf(nums[j]));
+                writer.write(" ");
             }
+            writer.newLine();
         }
+        
+        writer.close();
+        
     }
 }
